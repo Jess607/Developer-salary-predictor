@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>Developer Salaries</title>
+</head>
+<body class="p-3 mb-2 bg-dark text-white">
+   <div class="container">
+    <h1 class="display-6 text-center"> Developer Salaries Predictor</h1>
+    <form action="/predict" method="post" class="form-class">
+    <div class="border p-3">
+        <h5 class="fw-medium"> Personal information</h5>
+        <h6 class="fw-light">Age </h6>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="Age" id="Age" value="Under 18 years old">
+            <label class="form-check-label" for="Age">
+                Under 18 years old
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="Age" id="Age" value="18-24 years old">
+            <label class="form-check-label" for="Age">
+                18-24 years old
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="Age" id="Age" value="25-34 years old">
+            <label class="form-check-label" for="Age">
+                25-34 years old
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="Age" id="Age" value="35-44 years old">
+            <label class="form-check-label" for="Age">
+                35-44 years old
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="Age" id="Age" value="45-54 years old">
+            <label class="form-check-label" for="Age">
+                45-54 years old
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="Age" id="Age" value="55-64 years old">
+            <label class="form-check-label" for="Age">
+                55-64 years old
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="Age" id="Age" value="65 years or older">
+            <label class="form-check-label" for="Age">
+                65 years or older
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="Age" id="Age" value="Prefer not to say">
+            <label class="form-check-label" for="Age">
+                Prefer not to say
+            </label>
+        </div>
+        <br>
+        <h6 class="fw-light"> Country Of Residence </h6>
+        <select class="form-select" aria-label="Default select example" name="Country"  required="required">
+            <option selected value="Australia">Australia</option>
+            <option value="Brazil">Brazil</option>
+            <option value="Canada">Canada</option>
+            <option value="France">France</option>
+            <option value="Germany">Germany</option>
+            <option value="India">India</option>
+            <option value="Italy">Italy</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="Poland">Poland</option>
+            <option value="Russian Federation">Russian Federation</option>
+            <option value="Spain">Spain</option>
+            <option value="United Kingdom of Great Britain and Northern Ireland">United Kingdom of Great Britain and Northern Ireland</option>
+            <option value="United States of America">United States of America</option>
+          </select>
+        <br>
+        <h6 class="fw-light">Gender</h6>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="Gender" id="Gender" value="Man">
+            <label class="form-check-label" for="Gender">
+                Male
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="Gender" id="Gender" value="Woman">
+            <label class="form-check-label" for="Gender">
+                Female
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="Gender" id="Gender" value="Other gender forms">
+            <label class="form-check-label" for="Gender">
+                Other gender forms
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="Gender" id="Gender" value="Prefer not to state my gender">
+            <label class="form-check-label" for="Gender">
+                Prefer not to state my gender
+            </label>
+        </div>
+        <br>
+        <h6 class="fw-light">Highest Education Attained</h6>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="EdLevel" id="EdLevel" value="Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)">
+            <label class="form-check-label" for="EdLevel">
+                Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="EdLevel" id="EdLevel" value="Bachelor’s degree (B.A., B.S., B.Eng., etc.)">
+            <label class="form-check-label" for="EdLevel">
+                Bachelor’s degree (B.A., B.S., B.Eng., etc.)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="EdLevel" id="EdLevel" value="Some college/university study without earning a degree">
+            <label class="form-check-label" for="EdLevel">
+                Some college/university study without earning a degree
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="EdLevel" id="EdLevel" value="Master’s degree (M.A., M.S., M.Eng., MBA, etc.)">
+            <label class="form-check-label" for="EdLevel">
+                Master’s degree (M.A., M.S., M.Eng., MBA, etc.)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="EdLevel" id="EdLevel" value="Other Degree(Associate or Professional)">
+            <label class="form-check-label" for="EdLevel">
+                Other Degree(Associate or Professional)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="EdLevel" id="EdLevel" value="Doctoral Degree">
+            <label class="form-check-label" for="EdLevel">
+                Doctoral Degree
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="EdLevel" id="EdLevel" value="Something else">
+            <label class="form-check-label" for="EdLevel">
+                Something else
+            </label>
+        </div>
+        <br>
+        <br>
+        <h5 class="fw-medium"> Employment information</h5>
+        <h6 class="fw-light">Developer Type</h6>
+        <select class="form-select" aria-label="Default select example" name="DevType"  required="required">
+            <option selected value="Developer, full-stack">Full stack developer</option>
+            <option value="Developer, front-end">Front-end developer</option>
+            <option value="Developer, mobile">Mobile developer</option>
+            <option value="Developer, back-end">Back-end Developer</option>
+            <option value="Developer, desktop or enterprise applications">Enterprise Applications Developer</option>
+            <option value="Engineer, data">Data Engineer</option>
+            <option value="Data scientist or machine learning specialist">Data Scientist Or Machine Learning Specialist</option>
+            <option value="Developer, embedded applications or devices">Embedded Applications Developer</option>
+            <option value="DevOps specialist">DevOps Engineer</option>
+            <option value="Developer, QA or test">QA Developer</option>
+            <option value="Developer, game or graphics">Game or Graphics Developer</option>
+            <option value="Data or business analyst">Data or Business Analyst</option>
+            <option value="Engineer, site reliability">Site Reliability Engineer</option>
+            <option value="Database administrator">Database Administrator</option>
+            <option value="Product manager">Product Manager</option>
+            <option value="Designer">Designer</option>
+            <option value="System administrator">System Administrator</option>
+            <option value="Engineering manager">Engineering Manager</option>
+            <option value="Academic researcher">Academic Researcher</option>
+            <option value="Senior Executive (C-Suite, VP, etc.)">Senior Executive (C-Suite, VP, etc.)</option>
+            <option value="Scientist">Scientist</option>
+            <option value="Educator">Educator</option>
+            <option value="Marketing or sales professional">Marketing or Sales Professional</option>
+            <option value="Student">Student</option>
+            <option value="Not entirely sure of my devtype">Not entirely sure of my devtype</option>
+          </select>
+        <br>
+        <h6 class="fw-light">Organization Size</h6>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="OrgSize" id="Just me - I am a freelancer, sole proprietor, etc." value="Just me - I am a freelancer, sole proprietor, etc.">
+            <label class="form-check-label" for="Just me - I am a freelancer, sole proprietor, etc.">
+                Just me - I am a freelancer, sole proprietor, etc.
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="OrgSize" id="2 to 9 employees" value="2 to 9 employees">
+            <label class="form-check-label" for="2 to 9 employees">
+                2 to 9 employees
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="OrgSize" id="10 to 19 employees" value="10 to 19 employees">
+            <label class="form-check-label" for="10 to 19 employees">
+                10 to 19 employees
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="OrgSize" id="20 to 99 employees" value="20 to 99 employees">
+            <label class="form-check-label" for="20 to 99 employees">
+                20 to 99 employees
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="OrgSize" id="100 to 499 employees" value="100 to 499 employees">
+            <label class="form-check-label" for="100 to 499 employees">
+                100 to 499 employees
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="OrgSize" id="500 to 999 employees" value="500 to 999 employees">
+            <label class="form-check-label" for="500 to 999 employees">
+                500 to 999 employees
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="OrgSize" id="1,000 to 4,999 employees" value="1,000 to 4,999 employees">
+            <label class="form-check-label" for="1,000 to 4,999 employees">
+                1,000 to 4,999 employees
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="OrgSize" id="5,000 to 9,999 employees" value="5,000 to 9,999 employees">
+            <label class="form-check-label" for="5,000 to 9,999 employees">
+                5,000 to 9,999 employees
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="OrgSize" id="10,000 or more employees" value="10,000 or more employees">
+            <label class="form-check-label" for="10,000 or more employees">
+                10,000 or more employees
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="OrgSize" id="I don’t know" value="I don’t know">
+            <label class="form-check-label" for="I don’t know">
+                I don’t know
+            </label>
+        </div>
+        <br>
+        <h6 class="fw-light">Employment Type</h6>
+        <select class="form-select" aria-label="Default select example" name="Employment"  required="required">
+            <option selected value="Employed full-time">Employed full-time</option>
+            <option value="Independent contractor, freelancer, or self-employed">Independent contractor, freelancer, or self-employed</option>
+            <option value="Employed part-time">Employed part-time</option>
+            <option value="Student, full-time">Student, full-time</option>
+            <option value="Not employed, but looking for work">Not employed, but looking for work</option>
+        </select>
+        <br> 
+        <div class="form-group">
+            <label for="YearsCode">
+                <h6 class="fw-light">Years Of Coding Experience(Please enter a number)</h6>
+            </label>
+            <input type="text" class="form-control" id="YearsCode" name="YearsCode" required="required">
+        </div>
+        <br>
+        <br>
+        <h5 class="fw-medium">Tech Stack</h5>
+        <div class="row">
+            <div class="col">
+                <h6 class="fw-light">Programming Languages</h6>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="C" id="LanguageHaveWorkedWith" name="LanguageHaveWorkedWith">
+                    <label class="form-check-label" for="LanguageHaveWorkedWith">
+                      C
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="C++" id="LanguageHaveWorkedWith" name="LanguageHaveWorkedWith">
+                    <label class="form-check-label" for="LanguageHaveWorkedWith">
+                      C++
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="C#" id="LanguageHaveWorkedWith" name="LanguageHaveWorkedWith">
+                    <label class="form-check-label" for="LanguageHaveWorkedWith">
+                      C#
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Dart" id="LanguageHaveWorkedWith" name="LanguageHaveWorkedWith">
+                    <label class="form-check-label" for="LanguageHaveWorkedWith">
+                      Dart
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Go" id="LanguageHaveWorkedWith" name="LanguageHaveWorkedWith">
+                    <label class="form-check-label" for="LanguageHaveWorkedWith">
+                      Go
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Bash/Shell" id="LanguageHaveWorkedWith" name="LanguageHaveWorkedWith">
+                    <label class="form-check-label" for="LanguageHaveWorkedWith">
+                      Bash/Shell
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="HTML/CSS" id="LanguageHaveWorkedWith" name="LanguageHaveWorkedWith">
+                    <label class="form-check-label" for="LanguageHaveWorkedWith">
+                      HTML/CSS
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Java" id="LanguageHaveWorkedWith" name="LanguageHaveWorkedWith">
+                    <label class="form-check-label" for="LanguageHaveWorkedWith">
+                      Java
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="JavaScript" id="LanguageHaveWorkedWith" name="LanguageHaveWorkedWith">
+                    <label class="form-check-label" for="LanguageHaveWorkedWith">
+                      JavaScript
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Node.js" id="LanguageHaveWorkedWith" name="LanguageHaveWorkedWith">
+                    <label class="form-check-label" for="LanguageHaveWorkedWith">
+                        Node.js
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="TypeScript" id="LanguageHaveWorkedWith" name="LanguageHaveWorkedWith">
+                    <label class="form-check-label" for="LanguageHaveWorkedWith">
+                        TypeScript
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Python" id="LanguageHaveWorkedWith" name="LanguageHaveWorkedWith">
+                    <label class="form-check-label" for="LanguageHaveWorkedWith">
+                        Python
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Kotlin" id="LanguageHaveWorkedWith" name="LanguageHaveWorkedWith">
+                    <label class="form-check-label" for="LanguageHaveWorkedWith">
+                        Kotlin
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="R" id="LanguageHaveWorkedWith" name="LanguageHaveWorkedWith">
+                    <label class="form-check-label" for="LanguageHaveWorkedWith">
+                        R
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="SQL" id="LanguageHaveWorkedWith" name="LanguageHaveWorkedWith">
+                    <label class="form-check-label" for="LanguageHaveWorkedWith">
+                        SQL
+                    </label>
+                </div>
+                
+            </div>
+            <div class="col">
+                <h6 class="fw-light">Databases</h6>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Microsoft SQL Server" id="DatabaseHaveWorkedWith" name="DatabaseHaveWorkedWith">
+                    <label class="form-check-label" for="DatabaseHaveWorkedWith">
+                        Microsoft SQL Server
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="MySQL" id="DatabaseHaveWorkedWith" name="DatabaseHaveWorkedWith">
+                    <label class="form-check-label" for="DatabaseHaveWorkedWith">
+                      MySQL
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="PostgreSQL" id="DatabaseHaveWorkedWith" name="DatabaseHaveWorkedWith">
+                    <label class="form-check-label" for="DatabaseHaveWorkedWith">
+                        PostgreSQL
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Redis" id="DatabaseHaveWorkedWith" name="DatabaseHaveWorkedWith">
+                    <label class="form-check-label" for="DatabaseHaveWorkedWith">
+                        Redis
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="MongoDB" id="DatabaseHaveWorkedWith" name="DatabaseHaveWorkedWith">
+                    <label class="form-check-label" for="DatabaseHaveWorkedWith">
+                        MongoDB
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="SQLite" id="DatabaseHaveWorkedWith" name="DatabaseHaveWorkedWith">
+                    <label class="form-check-label" for="DatabaseHaveWorkedWith">
+                        SQLite
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="MariaDB" id="DatabaseHaveWorkedWith" name="DatabaseHaveWorkedWith">
+                    <label class="form-check-label" for="DatabaseHaveWorkedWith">
+                        MariaDB
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Firebase" id="DatabaseHaveWorkedWith" name="DatabaseHaveWorkedWith">
+                    <label class="form-check-label" for="DatabaseHaveWorkedWith">
+                        Firebase
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Oracle" id="DatabaseHaveWorkedWith" name="DatabaseHaveWorkedWith">
+                    <label class="form-check-label" for="DatabaseHaveWorkedWith">
+                        Oracle
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="DynamoDB" id="DatabaseHaveWorkedWith" name="DatabaseHaveWorkedWith">
+                    <label class="form-check-label" for="DatabaseHaveWorkedWith">
+                        DynamoDB
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="I dont use databases" id="DatabaseHaveWorkedWith" name="DatabaseHaveWorkedWith">
+                    <label class="form-check-label" for="DatabaseHaveWorkedWith">
+                        I dont use databases
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <h6 class="fw-light">Cloud Platforms</h6>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="AWS" id="PlatformHaveWorkedWith" name="PlatformHaveWorkedWith">
+                    <label class="form-check-label" for="PlatformHaveWorkedWith">
+                        AWS
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="GCP" id="PlatformHaveWorkedWith" name="PlatformHaveWorkedWith">
+                    <label class="form-check-label" for="PlatformHaveWorkedWith">
+                      Google Cloud Platform
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Microsoft Azure" id="PlatformHaveWorkedWith" name="PlatformHaveWorkedWith">
+                    <label class="form-check-label" for="PlatformHaveWorkedWith">
+                        Microsoft Azure
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Other Cloud Platforms" id="PlatformHaveWorkedWith" name="PlatformHaveWorkedWith">
+                    <label class="form-check-label" for="PlatformHaveWorkedWith">
+                        Other Cloud Platforms
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="I dont use any cloud platforms" id="PlatformHaveWorkedWith" name="PlatformHaveWorkedWith">
+                    <label class="form-check-label" for="PlatformHaveWorkedWith">
+                        I dont use any cloud platforms
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <h6 class="fw-light">Web Frameworks</h6>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="React.js" id="WebframeHaveWorkedWith" name="WebframeHaveWorkedWith">
+                    <label class="form-check-label" for="WebframeHaveWorkedWith">
+                        React.js
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Spring" id="WebframeHaveWorkedWith" name="WebframeHaveWorkedWith">
+                    <label class="form-check-label" for="WebframeHaveWorkedWith">
+                        Spring
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Angular" id="WebframeHaveWorkedWith" name="WebframeHaveWorkedWith">
+                    <label class="form-check-label" for="WebframeHaveWorkedWith">
+                        Angular
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="ASP.NET or ASP.NET Core" id="WebframeHaveWorkedWith" name="WebframeHaveWorkedWith">
+                    <label class="form-check-label" for="WebframeHaveWorkedWith">
+                        ASP.NET or ASP.NET Core
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Django" id="WebframeHaveWorkedWith" name="WebframeHaveWorkedWith">
+                    <label class="form-check-label" for="WebframeHaveWorkedWith">
+                        Django
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Flask" id="WebframeHaveWorkedWith" name="WebframeHaveWorkedWith">
+                    <label class="form-check-label" for="WebframeHaveWorkedWith">
+                        Flask
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="jQuery" id="WebframeHaveWorkedWith" name="WebframeHaveWorkedWith">
+                    <label class="form-check-label" for="WebframeHaveWorkedWith">
+                        jQuery
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Other webframeworks" id="WebframeHaveWorkedWith" name="WebframeHaveWorkedWith">
+                    <label class="form-check-label" for="WebframeHaveWorkedWith">
+                        Other webframeworks
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="I dont use any webframeworks" id="WebframeHaveWorkedWith" name="WebframeHaveWorkedWith">
+                    <label class="form-check-label" for="WebframeHaveWorkedWith">
+                        I dont use any webframeworks
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <h6 class="fw-light">Other Frameworks/Libraries</h6>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="NumPy" id="MiscTechHaveWorkedWith" name="MiscTechHaveWorkedWith">
+                    <label class="form-check-label" for="MiscTechHaveWorkedWith">
+                        NumPy
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Pandas" id="MiscTechHaveWorkedWith" name="MiscTechHaveWorkedWith">
+                    <label class="form-check-label" for="MiscTechHaveWorkedWith">
+                        Pandas
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Keras/Tensorflow" id="MiscTechHaveWorkedWith" name="MiscTechHaveWorkedWith">
+                    <label class="form-check-label" for="MiscTechHaveWorkedWith">
+                        Keras/Tensorflow
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Apache Spark" id="MiscTechHaveWorkedWith" name="MiscTechHaveWorkedWith">
+                    <label class="form-check-label" for="MiscTechHaveWorkedWith">
+                        Apache Spark
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Hadoop" id="MiscTechHaveWorkedWith" name="MiscTechHaveWorkedWith">
+                    <label class="form-check-label" for="MiscTechHaveWorkedWith">
+                        Hadoop
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value=".NET Framework" id="MiscTechHaveWorkedWith" name="MiscTechHaveWorkedWith">
+                    <label class="form-check-label" for="MiscTechHaveWorkedWith">
+                        .NET Framework
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value=".NET Core/.NET 5" id="MiscTechHaveWorkedWith" name="MiscTechHaveWorkedWith">
+                    <label class="form-check-label" for="MiscTechHaveWorkedWith">
+                        .NET Core/.NET 5
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Flutter" id="MiscTechHaveWorkedWith" name="MiscTechHaveWorkedWith">
+                    <label class="form-check-label" for="MiscTechHaveWorkedWith">
+                        Flutter
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="React Native" id="MiscTechHaveWorkedWith" name="MiscTechHaveWorkedWith">
+                    <label class="form-check-label" for="MiscTechHaveWorkedWith">
+                        React Native
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Torch/PyTorch" id="MiscTechHaveWorkedWith" name="MiscTechHaveWorkedWith">
+                    <label class="form-check-label" for="MiscTechHaveWorkedWith">
+                        Torch/PyTorch
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="No other frameworks used" id="MiscTechHaveWorkedWith" name="MiscTechHaveWorkedWith">
+                    <label class="form-check-label" for="MiscTechHaveWorkedWith">
+                        No other frameworks used
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <h6 class="fw-light">Other Tech Tools</h6>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Git" id="ToolsTechHaveWorkedWith" name="ToolsTechHaveWorkedWith">
+                    <label class="form-check-label" for="ToolsTechHaveWorkedWith">
+                        Git
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Docker" id="ToolsTechHaveWorkedWith" name="ToolsTechHaveWorkedWith">
+                    <label class="form-check-label" for="ToolsTechHaveWorkedWith">
+                        Docker
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Kubernetes" id="ToolsTechHaveWorkedWith" name="ToolsTechHaveWorkedWith">
+                    <label class="form-check-label" for="ToolsTechHaveWorkedWith">
+                        Kubernetes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Terraform" id="ToolsTechHaveWorkedWith" name="ToolsTechHaveWorkedWith">
+                    <label class="form-check-label" for="ToolsTechHaveWorkedWith">
+                        Terraform
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="No extra tools used" id="ToolsTechHaveWorkedWith" name="ToolsTechHaveWorkedWith">
+                    <label class="form-check-label" for="ToolsTechHaveWorkedWith">
+                        No extra tools used
+                    </label>
+                </div>
+
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="text-center">
+            <input type="submit" value="Submit" class="btn btn-secondary btn-lg text-center">
+        </div>
+    </div>
+    </form>
+    
+    
+    <h5 class="fw-medium">{{ prediction_text }}</h5>
+
+   </div>
+   
+
+</body>
+</html>
