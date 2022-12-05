@@ -3,12 +3,11 @@ This is a flask web application that predicts developer salaries containerized u
 
 
 # Table Of Contents
-* [Installation](https://github.com/Jess607/Exploratory-Data-Analysis-of-IT-employees-in-Europe#installation)
-* [About the Project](https://github.com/Jess607/Exploratory-Data-Analysis-of-IT-employees-in-Europe#about-the-project)
-* [Data Gathering](https://github.com/Jess607/Exploratory-Data-Analysis-of-IT-employees-in-Europe#data-gathering)
-* [File Description](https://github.com/Jess607/Exploratory-Data-Analysis-of-IT-employees-in-Europe#file-description)
-* [Technologies Used](https://github.com/Jess607/Exploratory-Data-Analysis-of-IT-employees-in-Europe#file-description)
-* [Limitations](https://github.com/Jess607/Exploratory-Data-Analysis-of-IT-employees-in-Europe#limitations)
+* [Installation](https://github.com/Jess607/Developer-salary-predictor#installation)
+* [About the Project](https://github.com/Jess607/Developer-salary-predictor#about-the-project)
+* [Data Gathering](https://github.com/Jess607/Developer-salary-predictor#data-gathering)
+* [File Description](https://github.com/Jess607/Developer-salary-predictor#file-description)
+* [Limitations](https://github.com/Jess607/Developer-salary-predictor#limitations)
 
 # Installation 
 The code requires python versions of 3.10 as well as other python packages. To install libraries use 
@@ -23,7 +22,29 @@ This motivated and birthed this project. `Stackoverflow yearly survey data` for 
 Data utilized was gotten from Stackoverflow's yearly developer survey for the year 2021. It comes alongside a schema. All of which are available in the `data` folder in the project directory.
 
 # File Description 
-The 
+The project contains:
+* a `data` folder that holds the data files used for the exploratory data analysis and model building 
+* a `model_building` folder that contains three files; an `EDA.ipynb` file where EDA was carried out, a `model.ipynb` file where feature selection, engineering and model building was carried out and a `variables.py` file where feature options were stored
+* an `app.py` file where the flask app was built 
+* a `templates` folder that hold the html files
+* a `static` folder that holds the css files
+* a `dockerfile` that holds the docker image used to create the docker container 
+* a `model.h5` file which is the saved keras model
+* a `preprocessingjoblib` which is a preprocessing pipeline 
+* a `requirements.txt` file which holds the requirements used to create the docker image.
 
 # Limitations 
-* The greatest limitation to the EDA process was that the sample data gathered was not sufficiently representative of the population being studied. Thus, full inferential results could not be drawn for certain cities in Europe unli
+* The greatest limitation to the project was the fact that not all countries could be represented because not all sample collected were a good representation of all countries in the world to be considered for model building. Ultimately, only 
+`United States of America`,                               
+`India`,                                                    
+`Germany`,                                                  
+`United Kingdom of Great Britain and Northern Ireland`,   
+`Canada`,                                                  
+`France`,                                                   
+`Brazil`,                                                   
+`Poland`,                                                   
+`Netherlands`,                                              
+`Italy`,                                                    
+`Spain`,                                                    
+`Russian Federation`,                                       
+`Australia` were considered.
